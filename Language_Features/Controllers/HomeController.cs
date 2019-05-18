@@ -13,22 +13,15 @@ namespace Language_Features.Controllers
     {
         public IActionResult Index()
         {
-            List<string> results = new List<string>();
-            foreach (Product p in Product.GetProducts())
-            {
+            //Object initializer
+            //string[] names = new string[3];
+            //names[0] = "Bob";
+            //names[1] = "Joe";
+            //names[2] = "Alice";
+            //return View("Index", names);
 
-                string name = p?.Name ?? "<No Name>";
-                decimal? price = p?.Price ?? 0;
-                string relatedName = p?.Related?.Name ?? "<None>";
-
-                // Using String Interpolation 
-                results.Add($"Name: {name}, Price: {price}, Related: {relatedName}");
-
-                results.Add(string.Format("Name: {0}, Price: {1}, Related: {2}",
-                name, price, relatedName));
-
-            }
-            return View(results);
+            //Using collection initializer to create collection in one step
+            return View("Index", new string[] { "Bob", "Joe", "Alice" });
         }
 
 
