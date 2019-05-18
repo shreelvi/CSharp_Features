@@ -14,14 +14,11 @@ namespace Language_Features.Controllers
         public IActionResult Index()
         {
             //Object initializer
-            //string[] names = new string[3];
-            //names[0] = "Bob";
-            //names[1] = "Joe";
-            //names[2] = "Alice";
-            //return View("Index", names);
-
-            //Using collection initializer to create collection in one step
-            return View("Index", new string[] { "Bob", "Joe", "Alice" });
+            Dictionary<string, Product> products = new Dictionary<string, Product> {
+                { "Kayak", new Product { Name = "Kayak", Price = 275M } },
+                { "Lifejacket", new Product{ Name = "Lifejacket", Price = 48.95M } }
+            };
+            return View("Index", products.Keys);
         }
 
 
