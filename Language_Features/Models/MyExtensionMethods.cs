@@ -18,5 +18,18 @@ namespace Language_Features.Models
                 total += prod?.Price ?? 0;            }
             return total;
         }
+
+        // filter products so that Product objects whose Price property matches or exceeds 
+        // the parameter are returned in the result.
+        public static IEnumerable<Product> FilterByPrice(this IEnumerable<Product> productEnum, decimal minimumPrice)
+        {
+            foreach (Product prod in productEnum)
+            {
+                if ((prod?.Price ?? 0) >= minimumPrice)
+                {
+                    yield return prod;
+                }
+            }
+        }
     }
 }
