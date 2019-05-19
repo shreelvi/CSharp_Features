@@ -10,15 +10,18 @@ namespace Language_Features.Controllers
 {
     public class HomeController : Controller
     {
-
-        //Defining an Asynchronous Action Methods in the HomeController
-        public async Task<ViewResult> Index()
+        // Using nameof Expressions
+        public ViewResult Index()
         {
             //var products = new[] { new { Name = "Kayak", Price = 275M },
-            long? length = await MyAsyncMethods.GetPageLength();
-            return View(new string[] { $"Length: {length}" });
+            var products = new[] { new { Name = "Kayak", Price = 275M },
+                             new { Name = "Lifejacket", Price = 48.95M },
+                             new { Name = "Soccer ball", Price = 19.50M },
+                             new { Name = "Corner flag", Price = 34.95M }
+            };
 
-
+            return View(products.Select(p =>
+            $"{nameof(p.Name)}: {p.Name}, {nameof(p.Price)}: {p.Price}"));
         }
 
     }
