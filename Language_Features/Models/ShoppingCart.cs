@@ -14,10 +14,12 @@ namespace Language_Features.Models
 
         public IEnumerator<Product> GetEnumerator()
         {
-            return Products.GetEnumerator();        }
+            return Products.GetEnumerator();
+        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();        }
+            return GetEnumerator();
+        }
     }
 }

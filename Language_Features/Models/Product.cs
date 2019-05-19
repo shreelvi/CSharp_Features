@@ -11,7 +11,9 @@ namespace Language_Features.Models
         public string Category { get; set; } = "Watersports"; //Using auto-implemented property initializer
         public decimal? Price { get; set; }
         public Product Related { get; set; }
-        public bool InStock { get; } = true; // Creating read-Only automatically implemented properties
+        public bool InStock { get; } = true; // Creating read-Only automatically implemented properties
+        public bool NameBeginsWithS => Name?[0] == 'S'; //Expressing a property as lambda expression
+
 
         public static Product[] GetProducts()
         {
