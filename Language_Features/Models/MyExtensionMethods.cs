@@ -19,24 +19,11 @@ namespace Language_Features.Models
             return total;
         }
 
-        // filter products so that Product objects whose Price property matches or exceeds 
-        // the parameter are returned in the result.
-        public static IEnumerable<Product> FilterByPrice(this IEnumerable<Product> productEnum, decimal minimumPrice)
+        public static IEnumerable<Product> Filter(this IEnumerable<Product> productEnum, Func<Product, bool> selector)
         {
             foreach (Product prod in productEnum)
             {
-                if ((prod?.Price ?? 0) >= minimumPrice)
-                {
-                    yield return prod;
-                }
-            }
-        }
-
-        public static IEnumerable<Product> FilterByName(this IEnumerable<Product> productEnum, char firstLetter)
-        {
-            foreach (Product prod in productEnum)
-            {
-                if (prod?.Name?[0] == firstLetter)
+                if (selector(prod))
                 {
                     yield return prod;
                 }
