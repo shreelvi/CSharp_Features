@@ -9,13 +9,13 @@ namespace Language_Features.Models
     // that you do not own and cannot modify directly
     public static class MyExtensionMethods
     {
-        public static decimal TotalPrices(this ShoppingCart cartParam)
+        // Applying Extension Methods to an Interface 
+        public static decimal TotalPrices(this IEnumerable<Product> products)
         {
             decimal total = 0;
-            foreach (Product prod in cartParam.Products)
+            foreach (Product prod in products)
             {
-                total += prod?.Price ?? 0;
-            }
+                total += prod?.Price ?? 0;            }
             return total;
         }
     }

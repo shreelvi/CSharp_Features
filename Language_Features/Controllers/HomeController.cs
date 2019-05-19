@@ -14,11 +14,11 @@ namespace Language_Features.Controllers
         public IActionResult Index()
         {
             //Object initializer
-            Dictionary<string, Product> products = new Dictionary<string, Product> {
-                { "Kayak", new Product { Name = "Kayak", Price = 275M } },
-                { "Lifejacket", new Product{ Name = "Lifejacket", Price = 48.95M } }
-            };
-            return View("Index", products.Keys);
+
+            //Using myextensionmethod
+            ShoppingCart cart = new ShoppingCart { Products = Product.GetProducts() };
+            decimal cartTotal = cart.TotalPrices();
+            return View("Index", new string[] { $"Total: {cartTotal:C2}" });
         }
 
 
